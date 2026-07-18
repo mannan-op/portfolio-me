@@ -8,6 +8,7 @@ import {
   SUGGESTED_QUESTIONS,
   type ChatMessage,
 } from '@/lib/chat-api'
+import { ChatMessageContent } from '@/components/ChatMessageContent'
 
 const WELCOME: ChatMessage = {
   role: 'assistant',
@@ -103,7 +104,11 @@ export function PortfolioChatbot() {
                       : 'mr-auto border border-white/[0.06] bg-background/60 text-foreground',
                   )}
                 >
-                  {msg.content}
+                  {msg.role === 'user' ? (
+                    msg.content
+                  ) : (
+                    <ChatMessageContent content={msg.content} />
+                  )}
                 </div>
               ))}
 
