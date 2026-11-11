@@ -7,6 +7,14 @@ const sectionIds = navItems.map((item) => item.id)
 
 export function SiteHeader() {
   const [active, setActive] = useState('')
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   useEffect(() => {
     const elements = sectionIds
@@ -31,12 +39,17 @@ export function SiteHeader() {
   }, [])
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-paper">
+    <header
+      className={cn(
+        'sticky top-0 z-40 border-b border-line bg-white',
+        scrolled && 'shadow-[0_8px_24px_-20px_rgba(14,16,20,0.45)]',
+      )}
+    >
       <a href="#content" className="skip-link">
         Skip to content
       </a>
-      <Wrap className="flex items-center justify-between gap-4 py-4">
-        <a href="#top" className="font-serif text-[1.35rem] leading-none tracking-[-0.02em]">
+      <Wrap className="flex items-center justify-between gap-4 py-3.5">
+        <a href="#top" className="text-[15px] font-semibold tracking-[-0.03em]">
           Abdul Mannan
         </a>
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
@@ -46,28 +59,28 @@ export function SiteHeader() {
               href={item.href}
               aria-current={active === item.id ? 'true' : undefined}
               className={cn(
-                'text-[0.9375rem] text-ink transition-colors duration-150 hover:text-accent',
-                active === item.id && 'text-accent',
+                'text-sm font-medium text-muted transition-colors duration-150 hover:text-ink',
+                active === item.id && 'text-ink',
               )}
             >
               {item.name}
             </a>
           ))}
         </nav>
-        <a href="#contact" className="btn-solid px-3.5 py-2 text-sm">
+        <a href="#contact" className="btn-solid px-3.5 py-2">
           Book a call
         </a>
       </Wrap>
       <nav className="border-t border-line lg:hidden" aria-label="Sections">
-        <Wrap className="flex gap-6 py-3">
+        <Wrap className="flex gap-6 py-2.5">
           {navItems.map((item) => (
             <a
               key={item.id}
               href={item.href}
               aria-current={active === item.id ? 'true' : undefined}
               className={cn(
-                'text-sm text-ink transition-colors duration-150 hover:text-accent',
-                active === item.id && 'text-accent',
+                'text-sm font-medium text-muted transition-colors duration-150 hover:text-ink',
+                active === item.id && 'text-ink',
               )}
             >
               {item.name}

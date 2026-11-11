@@ -9,6 +9,6 @@ export function Wrap({
   children: ReactNode
 }) {
   return (
-    <div className={cn('mx-auto w-full max-w-[68rem] px-5 sm:px-8', className)}>{children}</div>
+    <div className={cn('mx-auto w-full max-w-[76rem] px-5 sm:px-8', className)}>{children}</div>
   )
 }
