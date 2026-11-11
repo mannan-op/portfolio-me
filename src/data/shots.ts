@@ -48,10 +48,10 @@ export const projectShots: Record<string, ProjectShot> = {
   },
   'Abeeras Collection': {
     src: abeeraShot,
-    alt: 'Coming soon page for Abeera Collection, with the shop name and Lahore',
+    alt: 'Abeera homepage: Eid collection hero for a Lahore womenswear shop',
     width: 1440,
     height: 900,
-    position: 'center',
+    position: 'center top',
   },
   'Tasbeeha Collections': {
     src: tasbeehaShot,

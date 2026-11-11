@@ -35,12 +35,13 @@ export const projects: Project[] = [
   },
   {
     title: 'Abeeras Collection',
-    hook: 'Coming-soon page for a clothing shop in Lahore.',
+    hook: 'Pakistani womenswear shop in Lahore.',
     description:
-      'The live site is a coming-soon page for Abeera Collection. It names the shop, says Lahore, and says the shop is opening soon.',
-    problem: 'The public site introduces Abeera Collection and says the shop is opening soon.',
+      'An online store for Abeera, a Lahore house selling lawn, chiffon, and stitched and unstitched clothes. The homepage leads with the Eid collection. Cash on delivery is offered, and product pages include WhatsApp help.',
+    problem:
+      'Abeera needed a shop that could show lawn, chiffon, and stitched and unstitched collections, including Eid, and take orders with cash on delivery.',
     built:
-      'A coming-soon page: the city, the name, and one line that the shop is opening soon.',
+      'An e-commerce store based in Lahore. The homepage opens on the Eid collection, with paths for the stitched collection and unstitched fabric. The banner lists cash on delivery and free delivery over Rs. 5,000, and product pages offer WhatsApp help.',
     stack: ['Next.js'],
     lead: true,
     site: 'https://abeera-shop.vercel.app',
