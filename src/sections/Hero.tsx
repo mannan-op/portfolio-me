@@ -1,5 +1,9 @@
-import profilePhoto from '@/assets/profile.png'
+import portrait from '@/assets/profile.webp'
+import portraitAvif from '@/assets/profile.avif'
+import portraitSmall from '@/assets/profile-480.webp'
+import portraitSmallAvif from '@/assets/profile-480.avif'
 import { BrowserFrame, ShotCover } from '@/components/BrowserFrame'
+import { ResponsiveImage } from '@/components/ResponsiveImage'
 import { Wrap } from '@/components/Wrap'
 import { projectShots } from '@/data/shots'
 import { projects } from '@/data/projects'
@@ -40,11 +44,18 @@ export function Hero() {
           </div>
 
           <figure className="w-44 sm:w-52 lg:w-full">
-            <img
-              src={profilePhoto}
+            <ResponsiveImage
               alt="Portrait of Abdul Mannan"
               width={764}
               height={880}
+              webp={portrait}
+              avif={portraitAvif}
+              webpSmall={portraitSmall}
+              avifSmall={portraitSmallAvif}
+              smallWidth={480}
+              sizes="(min-width: 1024px) 220px, 208px"
+              loading="eager"
+              fetchPriority="high"
               className="aspect-[4/5] w-full rounded-2xl object-cover object-[center_18%] shadow-[0_18px_40px_-24px_rgba(14,16,20,0.55)]"
             />
             <figcaption className="mt-3 text-sm font-semibold tracking-[-0.02em]">
@@ -97,13 +108,18 @@ function FrameBody({
   }
 
   return (
-    <img
-      src={shot.src}
+    <ResponsiveImage
       alt={shot.alt}
       width={shot.width}
       height={shot.height}
-      className="h-full min-h-[180px] w-full object-cover lg:min-h-0"
+      webp={shot.src}
+      avif={shot.avif}
+      webpSmall={shot.small}
+      avifSmall={shot.smallAvif}
+      smallWidth={shot.smallWidth}
+      sizes="(min-width: 1024px) 40vw, 100vw"
       style={{ objectPosition: shot.position }}
+      className="h-full min-h-[180px] w-full object-cover lg:min-h-0"
     />
   )
 }

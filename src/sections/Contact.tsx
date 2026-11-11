@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react'
+import { useRef, useState, type FormEvent } from 'react'
 import { Reveal } from '@/components/Reveal'
 import { SectionIntro } from '@/components/SectionIntro'
 import { Wrap } from '@/components/Wrap'
@@ -10,16 +10,46 @@ type FormStatus = 'idle' | 'sending' | 'success' | 'error'
 const fieldClass =
   'mt-2 w-full rounded-[10px] border border-line bg-canvas px-3 py-3 text-base text-ink outline-none transition-colors duration-150 placeholder:text-muted/80 focus-visible:border-accent'
 
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
 export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>('idle')
+  const [formError, setFormError] = useState<string | null>(null)
+  const openedAt = useRef(Date.now())
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    setStatus('sending')
+    setFormError(null)
 
     const form = event.currentTarget
+    const data = new FormData(form)
+    const name = String(data.get('name') ?? '').trim()
+    const email = String(data.get('email') ?? '').trim()
+    const message = String(data.get('message') ?? '').trim()
+    const honeypot = String(data.get('bot-field') ?? '').trim()
+
+    if (honeypot || Date.now() - openedAt.current < 1500) {
+      setStatus('success')
+      form.reset()
+      return
+    }
+
+    if (name.length < 2 || name.length > 80) {
+      setFormError('Please enter your name.')
+      return
+    }
+    if (!EMAIL_PATTERN.test(email) || email.length > 120) {
+      setFormError('Please enter a valid email address.')
+      return
+    }
+    if (message.length < 10 || message.length > 2000) {
+      setFormError('Please describe the project in at least a sentence.')
+      return
+    }
+
+    setStatus('sending')
     const body = new URLSearchParams(
-      Object.fromEntries(new FormData(form).entries()) as Record<string, string>,
+      Object.fromEntries(data.entries()) as Record<string, string>,
     ).toString()
 
     try {
@@ -84,6 +114,8 @@ export function ContactForm() {
           name="name"
           type="text"
           required
+          minLength={2}
+          maxLength={80}
           autoComplete="name"
           disabled={status === 'sending'}
           className={fieldClass}
@@ -98,6 +130,7 @@ export function ContactForm() {
           name="email"
           type="email"
           required
+          maxLength={120}
           autoComplete="email"
           disabled={status === 'sending'}
           className={fieldClass}
@@ -112,11 +145,19 @@ export function ContactForm() {
           name="message"
           rows={5}
           required
+          minLength={10}
+          maxLength={2000}
           disabled={status === 'sending'}
           className={`${fieldClass} resize-y`}
           placeholder="What the business needs, and roughly when."
         />
       </div>
+
+      {formError ? (
+        <p className="text-sm text-accent" role="alert">
+          {formError}
+        </p>
+      ) : null}
 
       {status === 'error' ? (
         <p className="text-sm text-accent">
@@ -152,7 +193,7 @@ export function Contact() {
           <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-16">
             <dl className="divide-y divide-white/15 border-y border-white/15 lg:col-span-5">
               <div className="grid grid-cols-[6.5rem_minmax(0,1fr)] gap-4 py-4">
-                <dt className="text-sm text-white/55">Email</dt>
+                <dt className="text-sm text-white/80">Email</dt>
                 <dd>
                   <a
                     href={`mailto:${profile.email}`}
@@ -163,7 +204,7 @@ export function Contact() {
                 </dd>
               </div>
               <div className="grid grid-cols-[6.5rem_minmax(0,1fr)] gap-4 py-4">
-                <dt className="text-sm text-white/55">Phone</dt>
+                <dt className="text-sm text-white/80">Phone</dt>
                 <dd>
                   <a
                     href={telHref(profile.phone)}
@@ -174,14 +215,14 @@ export function Contact() {
                 </dd>
               </div>
               <div className="grid grid-cols-[6.5rem_minmax(0,1fr)] gap-4 py-4">
-                <dt className="text-sm text-white/55">WhatsApp</dt>
+                <dt className="text-sm text-white/80">WhatsApp</dt>
                 {/* TODO: add the WhatsApp link. Do not point this at '#' . */}
-                <dd className="text-sm text-white/70 sm:text-base">Link to be added</dd>
+                <dd className="text-sm text-white/80 sm:text-base">Link to be added</dd>
               </div>
               <div className="grid grid-cols-[6.5rem_minmax(0,1fr)] gap-4 py-4">
-                <dt className="text-sm text-white/55">Book a call</dt>
+                <dt className="text-sm text-white/80">Book a call</dt>
                 {/* TODO: add the calendar / booking URL, then point the header button at it. */}
-                <dd className="text-sm text-white/70 sm:text-base">Calendar link to be added</dd>
+                <dd className="text-sm text-white/80 sm:text-base">Calendar link to be added</dd>
               </div>
             </dl>
 

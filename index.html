@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#2454e6" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
@@ -29,6 +32,45 @@
     />
     <meta name="twitter:image" content="https://abdulmannan.me/og-image.png" />
     <title>Abdul Mannan — Websites, automations, and business software</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://abdulmannan.me/#website",
+            "name": "Abdul Mannan",
+            "url": "https://abdulmannan.me/",
+            "description": "Websites, AI automations, CRMs, and custom software for small and mid-sized businesses."
+          },
+          {
+            "@type": "Person",
+            "@id": "https://abdulmannan.me/#person",
+            "name": "Abdul Mannan",
+            "url": "https://abdulmannan.me/",
+            "email": "mailto:contact@abdulmannan.me",
+            "telephone": "+923224574467",
+            "jobTitle": "Software developer",
+            "sameAs": ["https://github.com/mannan-op"],
+            "alumniOf": {
+              "@type": "CollegeOrUniversity",
+              "name": "FAST-NUCES Lahore"
+            }
+          },
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://abdulmannan.me/#service",
+            "name": "Abdul Mannan",
+            "url": "https://abdulmannan.me/",
+            "email": "contact@abdulmannan.me",
+            "telephone": "+923224574467",
+            "image": "https://abdulmannan.me/og-image.png",
+            "areaServed": ["United States", "United Kingdom", "Europe", "United Arab Emirates", "Pakistan"],
+            "description": "Websites, AI automations, CRMs and internal systems, and custom business software for small and mid-sized businesses."
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <!-- Netlify form detection (required for React SPAs) -->

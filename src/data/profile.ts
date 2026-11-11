@@ -31,5 +31,6 @@ I'm currently pursuing my BS in Computer Science at FAST-NUCES Lahore, where cou
 export const navItems = [
   { name: 'Services', href: '#services', id: 'services' },
   { name: 'Work', href: '#work', id: 'work' },
+  { name: 'About', href: '#about', id: 'about' },
   { name: 'Contact', href: '#contact', id: 'contact' },
 ] as const

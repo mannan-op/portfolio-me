@@ -1,4 +1,5 @@
 import { BrowserFrame, ShotCover } from '@/components/BrowserFrame'
+import { ResponsiveImage } from '@/components/ResponsiveImage'
 import { Reveal } from '@/components/Reveal'
 import { SectionIntro } from '@/components/SectionIntro'
 import { Wrap } from '@/components/Wrap'
@@ -83,14 +84,18 @@ function StudyMedia({ project }: { project: Project }) {
 
   if (shot?.chrome === 'plain') {
     return (
-      <img
-        src={shot.src}
+      <ResponsiveImage
         alt={shot.alt}
         width={shot.width}
         height={shot.height}
-        loading="lazy"
-        className="aspect-[16/10] w-full object-cover"
+        webp={shot.src}
+        avif={shot.avif}
+        webpSmall={shot.small}
+        avifSmall={shot.smallAvif}
+        smallWidth={shot.smallWidth}
+        sizes="(min-width: 1024px) 560px, 100vw"
         style={{ objectPosition: shot.position }}
+        className="aspect-[16/10] w-full object-cover"
       />
     )
   }
@@ -98,14 +103,18 @@ function StudyMedia({ project }: { project: Project }) {
   return (
     <BrowserFrame label={project.title} className="h-full rounded-none border-0 shadow-none">
       {shot ? (
-        <img
-          src={shot.src}
+        <ResponsiveImage
           alt={shot.alt}
           width={shot.width}
           height={shot.height}
-          loading="lazy"
-          className="aspect-[16/10] w-full object-cover"
+          webp={shot.src}
+          avif={shot.avif}
+          webpSmall={shot.small}
+          avifSmall={shot.smallAvif}
+          smallWidth={shot.smallWidth}
+          sizes="(min-width: 1024px) 560px, 100vw"
           style={{ objectPosition: shot.position }}
+          className="aspect-[16/10] w-full object-cover"
         />
       ) : (
         // TODO: replace with a real screenshot. Do not invent a product mockup.
