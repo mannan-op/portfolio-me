@@ -53,6 +53,12 @@ function StudyCopy({ project, index }: { project: Project; index: number }) {
           <span className="text-muted">{project.built}</span>
         </p>
         <StackList stack={project.stack} />
+        {project.note ? (
+          <details className="text-sm leading-relaxed text-muted">
+            <summary className="cursor-pointer font-medium text-ink">Full note</summary>
+            <p className="mt-3">{project.note}</p>
+          </details>
+        ) : null}
         {/* TODO: measured results go here. Do not invent numbers, quotes, or client names. */}
         <p className="text-sm leading-relaxed text-muted">
           <span className="font-medium text-ink">Results. </span>
@@ -69,6 +75,20 @@ function StudyCopy({ project, index }: { project: Project; index: number }) {
 
 function StudyMedia({ project }: { project: Project }) {
   const shot = projectShots[project.title]
+
+  if (shot?.chrome === 'plain') {
+    return (
+      <img
+        src={shot.src}
+        alt={shot.alt}
+        width={shot.width}
+        height={shot.height}
+        loading="lazy"
+        className="aspect-[16/10] w-full object-cover"
+        style={{ objectPosition: shot.position }}
+      />
+    )
+  }
 
   return (
     <BrowserFrame label={project.title} className="h-full rounded-none border-0 shadow-none">

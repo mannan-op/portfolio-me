@@ -19,7 +19,7 @@ export function Hero() {
           <span className="block">a company runs on.</span>
         </h1>
 
-        <div className="mt-8 grid items-end gap-8 lg:grid-cols-[minmax(0,1fr)_13.75rem] lg:gap-14">
+        <div className="mt-6 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_13.75rem] lg:gap-12">
           <div>
             <p className="max-w-[38rem] text-base leading-relaxed text-muted sm:text-lg">
               You deal with me directly, from the first conversation through delivery. Most projects

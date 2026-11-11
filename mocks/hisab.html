@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hisab concept</title>
+    <style>
+      @font-face {
+        font-family: 'Inter Tight';
+        src: url('../src/assets/fonts/inter-tight.woff2') format('woff2');
+        font-weight: 400 700;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        width: 1600px;
+        height: 1000px;
+        overflow: hidden;
+        font-family: 'Inter Tight', ui-sans-serif, system-ui, sans-serif;
+        background: radial-gradient(circle at 50% 40%, #e7ebf1, #cfd5de);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .phone {
+        width: 420px;
+        height: 860px;
+        background: #ece5dd;
+        border-radius: 36px;
+        border: 10px solid #1c1e22;
+        overflow: hidden;
+        box-shadow: 0 30px 60px -28px rgba(20, 24, 28, 0.45);
+        display: flex;
+        flex-direction: column;
+      }
+      .top {
+        background: #075e54;
+        color: white;
+        padding: 18px 16px 14px;
+      }
+      .top small { display: block; opacity: 0.8; font-size: 11px; letter-spacing: 0.04em; }
+      .top strong { font-size: 18px; letter-spacing: -0.03em; }
+      .thread { padding: 16px 12px; display: flex; flex-direction: column; gap: 8px; }
+      .msg {
+        max-width: 86%;
+        padding: 8px 10px 6px;
+        border-radius: 10px;
+        font-size: 14px;
+        line-height: 1.4;
+        background: white;
+      }
+      .msg.out { align-self: flex-end; background: #d9fdd3; }
+      .msg time { display: block; text-align: right; color: #667781; font-size: 11px; margin-top: 2px; }
+      .concept {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        background: rgba(20, 22, 26, 0.78);
+        color: white;
+        font-size: 12px;
+        font-weight: 650;
+        padding: 6px 9px;
+        border-radius: 7px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="concept">Concept view</div>
+    <div class="phone">
+      <div class="top">
+        <small>WHATSAPP-STYLE SAMPLE</small>
+        <strong>Hisab</strong>
+      </div>
+      <div class="thread">
+        <div class="msg out">Spent 850 on tea for the site crew.<time>09:14</time></div>
+        <div class="msg">Logged PKR 850 · Food.<br />Left this week: PKR 12,400.<time>09:14</time></div>
+        <div class="msg out">What did we spend on transport?<time>09:16</time></div>
+        <div class="msg">Transport this month: PKR 6,200 across 4 sample entries.<time>09:16</time></div>
+        <div class="msg out">Set aside 5,000 for Friday.<time>09:18</time></div>
+        <div class="msg">Reserved PKR 5,000. Safe daily limit until Friday: PKR 1,480.<time>09:18</time></div>
+      </div>
+    </div>
+  </body>
+</html>

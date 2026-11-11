@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Construction Hub concept</title>
+    <style>
+      @font-face {
+        font-family: 'Inter Tight';
+        src: url('../src/assets/fonts/inter-tight.woff2') format('woff2');
+        font-weight: 400 700;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        width: 1600px;
+        height: 1000px;
+        overflow: hidden;
+        font-family: 'Inter Tight', ui-sans-serif, system-ui, sans-serif;
+        color: #1c1e22;
+        background: #f3f4f6;
+      }
+      .app { display: flex; height: 100%; }
+      aside {
+        width: 248px;
+        background: #14161a;
+        color: #e8eaee;
+        padding: 22px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+      }
+      .brand { font-weight: 700; letter-spacing: -0.03em; font-size: 18px; }
+      .brand span { display: block; margin-top: 4px; font-size: 12px; font-weight: 500; color: #9aa1ab; }
+      nav { display: flex; flex-direction: column; gap: 4px; }
+      nav button {
+        text-align: left;
+        border: 0;
+        background: transparent;
+        color: #c5cad3;
+        font: inherit;
+        font-size: 14px;
+        font-weight: 550;
+        padding: 10px 12px;
+        border-radius: 8px;
+      }
+      nav button.on { background: #2454e6; color: white; }
+      .user { margin-top: auto; font-size: 13px; color: #9aa1ab; }
+      main { flex: 1; padding: 28px 32px; display: flex; flex-direction: column; gap: 18px; }
+      header { display: flex; justify-content: space-between; align-items: flex-end; }
+      h1 { font-size: 28px; letter-spacing: -0.04em; }
+      header p { color: #5c6570; font-size: 14px; margin-top: 4px; }
+      .pill {
+        background: white;
+        border: 1px solid #e4e6eb;
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-size: 13px;
+        color: #5c6570;
+      }
+      .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+      .stat {
+        background: white;
+        border: 1px solid #e4e6eb;
+        border-radius: 12px;
+        padding: 14px 16px;
+      }
+      .stat b { display: block; font-size: 22px; letter-spacing: -0.03em; margin-top: 4px; }
+      .stat span { font-size: 12px; color: #5c6570; font-weight: 600; }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border: 1px solid #e4e6eb;
+        border-radius: 14px;
+        overflow: hidden;
+        font-size: 14px;
+      }
+      th, td { text-align: left; padding: 14px 16px; border-bottom: 1px solid #eef0f3; }
+      th { font-size: 12px; color: #5c6570; font-weight: 650; background: #fafbfc; }
+      .tag {
+        display: inline-block;
+        border-radius: 999px;
+        padding: 3px 8px;
+        font-size: 12px;
+        font-weight: 650;
+      }
+      .on-site { background: #e7f6ee; color: #157347; }
+      .hold { background: #f4efe4; color: #8a5a12; }
+      .concept {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        background: rgba(20, 22, 26, 0.78);
+        color: white;
+        font-size: 12px;
+        font-weight: 650;
+        padding: 6px 9px;
+        border-radius: 7px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="concept">Concept view</div>
+    <div class="app">
+      <aside>
+        <div class="brand">Construction Hub<span>Sample workspace</span></div>
+        <nav>
+          <button class="on">Job sites</button>
+          <button>Milestones</button>
+          <button>Invoices</button>
+          <button>Staff access</button>
+        </nav>
+        <div class="user">Signed in · sample staff</div>
+      </aside>
+      <main>
+        <header>
+          <div>
+            <h1>Job sites</h1>
+            <p>Sample data. Offline copy on this machine.</p>
+          </div>
+          <div class="pill">3 active · 2 invoices open</div>
+        </header>
+        <section class="stats">
+          <div class="stat"><span>Active sites</span><b>3</b></div>
+          <div class="stat"><span>Open milestones</span><b>8</b></div>
+          <div class="stat"><span>Unpaid invoices</span><b>$24,650</b></div>
+          <div class="stat"><span>Due this week</span><b>2</b></div>
+        </section>
+        <table>
+          <thead>
+            <tr>
+              <th>Site</th>
+              <th>Status</th>
+              <th>Milestone</th>
+              <th>Invoice</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>North yard</td>
+              <td><span class="tag on-site">Active</span></td>
+              <td>3 of 6</td>
+              <td>INV-1042 · draft</td>
+              <td>$18,400</td>
+            </tr>
+            <tr>
+              <td>Hill lane fit-out</td>
+              <td><span class="tag on-site">Active</span></td>
+              <td>1 of 4</td>
+              <td>INV-1048 · sent</td>
+              <td>$6,250</td>
+            </tr>
+            <tr>
+              <td>West depot</td>
+              <td><span class="tag hold">On hold</span></td>
+              <td>4 of 5</td>
+              <td>INV-0991 · paid</td>
+              <td>$42,000</td>
+            </tr>
+            <tr>
+              <td>Sample crew cabin</td>
+              <td><span class="tag on-site">Active</span></td>
+              <td>2 of 3</td>
+              <td>Not billed</td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+      </main>
+    </div>
+  </body>
+</html>

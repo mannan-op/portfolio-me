@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>OG</title>
+    <style>
+      @font-face {
+        font-family: 'Inter Tight';
+        src: url('../src/assets/fonts/inter-tight.woff2') format('woff2');
+        font-weight: 400 700;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        font-family: 'Inter Tight', ui-sans-serif, system-ui, sans-serif;
+        background: #ffffff;
+        color: #0e1014;
+        display: grid;
+        grid-template-columns: 1fr 280px;
+        align-items: center;
+        padding: 56px 64px;
+        gap: 36px;
+      }
+      .rule { width: 56px; height: 6px; background: #2454e6; border-radius: 99px; margin-bottom: 22px; }
+      .kicker { color: #2454e6; font-weight: 700; font-size: 18px; margin-bottom: 14px; }
+      h1 { font-size: 64px; line-height: 0.98; letter-spacing: -0.045em; }
+      p { margin-top: 22px; font-size: 28px; line-height: 1.25; letter-spacing: -0.03em; color: #3c4350; max-width: 680px; }
+      .site { margin-top: 28px; font-size: 18px; font-weight: 650; color: #5c6570; }
+      img {
+        width: 250px;
+        height: 312px;
+        object-fit: cover;
+        object-position: center 18%;
+        border-radius: 20px;
+        justify-self: end;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="rule"></div>
+      <div class="kicker">Abdul Mannan</div>
+      <h1>Websites, automations, and internal software.</h1>
+      <p>For small and mid-sized businesses.</p>
+      <div class="site">abdulmannan.me</div>
+    </div>
+    <img src="../src/assets/profile.png" alt="" />
+  </body>
+</html>

@@ -14,6 +14,8 @@ export interface Project {
   repo?: string
   /** Public website. Omit when none exists. Never set this to '#'. */
   site?: string
+  /** Longer case-study note, shown behind a disclosure on the card. */
+  note?: string
 }
 
 export const projects: Project[] = [
@@ -59,15 +61,16 @@ export const projects: Project[] = [
   },
   {
     title: 'Construction Hub',
-    hook: 'Cross-platform desktop app for project tracking and billing.',
+    hook: 'Desktop app for job sites, milestones, and billing.',
     description:
-      'Built for a freelance client — milestone management, billing workflows, and project tracking. Argon2 auth with SQLite backend.',
+      'A cross-platform desktop app for a freelance construction client: job sites, milestones, and invoices, offline, with Argon2 access control.',
     problem:
-      'A freelance client needed milestones, billing, and project tracking in one desktop app, rather than another subscription tool.',
+      'A freelance client running a construction business needed one place to track job sites, billing, and milestones, instead of spreadsheets spread across the team.',
     built:
-      'A Tauri and React desktop app for those three jobs, with Argon2 passwords and a local SQLite database.',
-    stack: ['Tauri', 'React', 'Rust'],
+      'A Tauri, React, and Rust desktop app that works offline and installs like a normal program. SQLite stores projects, milestones, and invoices on the machine. Argon2 limits billing data to authorized staff.',
+    stack: ['Tauri', 'React', 'Rust', 'SQLite', 'Argon2'],
     lead: true,
+    note: 'A freelance client running a construction business needed a way to track multiple job sites, manage billing, and monitor milestones, without relying on spreadsheets scattered across the team. I built a cross-platform desktop app in Tauri, React, and Rust: a fast, native-feeling app that works offline and installs like any other desktop program. Keeping it lightweight meant Tauri rather than Electron, while still supporting the relationships between projects, milestones, and invoices. A local SQLite database stores the data offline, and Argon2 authentication limits billing data to authorized staff. From that one app the client can track project status, generate billing records, and monitor milestone completion.',
   },
   {
     title: 'n8n video automation',
