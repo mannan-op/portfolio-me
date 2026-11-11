@@ -16,21 +16,24 @@ export interface Project {
   site?: string
   /** Longer case-study note, shown behind a disclosure on the card. */
   note?: string
+  /** Short honest credit, such as Team project. */
+  tag?: string
 }
 
 export const projects: Project[] = [
   {
     title: 'AutoStitch AI',
-    hook: 'AI-powered ecommerce marketplace for Pakistani ethnic wear.',
+    hook: 'Team project. A marketplace for custom tailoring.',
     description:
-      'Next.js + Django REST Framework monorepo (Turborepo) with JWT auth via httpOnly cookies. Features AI virtual try-on through an async Celery/Redis pipeline (Hugging Face/Fal/Replicate fallback), an AI stylist chatbot, multi-step checkout, guest cart with merge-on-login, and a unified admin dashboard.',
+      'Team project. Auto Stitch is a multi-vendor bespoke clothing marketplace: shop, custom bids, virtual try-on, order tracking, boutique tools, and admin. Abdul’s public repository is a fork of that project.',
     problem:
-      'Selling ethnic wear online needed more than a product grid: fitting help, a cart that works before signup, and a back office that can run the shop.',
+      'Shoppers and boutiques needed one place for custom clothing: a catalogue, quotes, messages, and a way to follow an order.',
     built:
-      'A Next.js and Django marketplace with cookie-based login, guest checkout, an async AI try-on pipeline, a stylist chat, and an admin dashboard.',
-    stack: ['Next.js', 'Django', 'DRF', 'PostgreSQL', 'Celery', 'Redis', 'Python'],
+      'Built with a team. The app is a React and Vite storefront with a Node and Express API, MongoDB, and Socket.IO. It includes the shop, virtual try-on, custom stitching bids, live order tracking, boutique dashboards, and an admin area.',
+    stack: ['React', 'Vite', 'Node.js', 'Express', 'MongoDB', 'Socket.IO'],
     featured: true,
     lead: true,
+    tag: 'Team project',
     repo: 'https://github.com/mannan-op/Auto-Stitch-v2',
   },
   {

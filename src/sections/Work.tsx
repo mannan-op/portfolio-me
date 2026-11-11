@@ -42,6 +42,11 @@ function StudyCopy({ project, index }: { project: Project; index: number }) {
   return (
     <div>
       <p className="text-sm font-semibold text-accent">{number}</p>
+      {project.tag ? (
+        <p className="mt-3 inline-flex rounded-md bg-canvas px-2 py-1 text-xs font-semibold text-ink">
+          {project.tag}
+        </p>
+      ) : null}
       <h3 className="mt-2 text-[1.7rem] font-semibold tracking-[-0.035em]">{project.title}</h3>
       <div className="mt-5 space-y-4 text-base leading-relaxed">
         <p>

@@ -18,9 +18,9 @@ export interface ProjectShot {
 export const projectShots: Record<string, ProjectShot> = {
   'AutoStitch AI': {
     src: autostitchShot,
-    alt: 'Concept view of an AutoStitch shop with sample clothing and a stylist chat',
-    width: 1600,
-    height: 1000,
+    alt: 'Auto Stitch homepage, with the Eid collection banner and the shop navigation',
+    width: 1440,
+    height: 900,
     position: 'center top',
   },
   'Construction Hub': {
