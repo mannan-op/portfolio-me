@@ -1,32 +1,30 @@
-import chatShot from '@/assets/work/mern-chat.webp'
 import { BrowserFrame, ShotCover } from '@/components/BrowserFrame'
 import { Reveal } from '@/components/Reveal'
 import { SectionIntro } from '@/components/SectionIntro'
 import { Wrap } from '@/components/Wrap'
 import { projects, type Project } from '@/data/projects'
+import { projectShots } from '@/data/shots'
 import { publicUrl } from '@/lib/links'
 
-const shots: Record<string, string> = {
-  'MERN ChatApp': chatShot,
-}
-
-function RepositoryLink({ link, repo }: { link?: string; repo?: string }) {
-  const href = publicUrl(repo) ?? publicUrl(link)
-  if (!href) return null
+function ExternalLink({ href, children }: { href?: string; children: string }) {
+  const url = publicUrl(href)
+  if (!url) return null
 
   return (
     <a
-      href={href}
+      href={url}
       target="_blank"
       rel="noopener noreferrer"
       className="text-sm font-semibold text-accent underline decoration-transparent underline-offset-4 transition-colors duration-150 hover:decoration-accent"
     >
-      Repository
+      {children}
     </a>
   )
 }
 
 function StackList({ stack }: { stack: readonly string[] }) {
+  if (stack.length === 0) return null
+
   return (
     <ul className="flex flex-wrap gap-2">
       {stack.map((item) => (
@@ -55,32 +53,34 @@ function StudyCopy({ project, index }: { project: Project; index: number }) {
           <span className="text-muted">{project.built}</span>
         </p>
         <StackList stack={project.stack} />
-        {project.lead ? (
-          // TODO: measured results go here. Do not invent numbers, quotes, or client names.
-          <p className="text-sm leading-relaxed text-muted">
-            <span className="font-medium text-ink">Results. </span>
-            To be added.
-          </p>
-        ) : null}
-        <RepositoryLink link={project.link} repo={project.repo} />
+        {/* TODO: measured results go here. Do not invent numbers, quotes, or client names. */}
+        <p className="text-sm leading-relaxed text-muted">
+          <span className="font-medium text-ink">Results. </span>
+          To be added.
+        </p>
+        <div className="flex flex-wrap gap-x-5 gap-y-2">
+          <ExternalLink href={project.site}>View live site</ExternalLink>
+          <ExternalLink href={project.repo ?? project.link}>Repository</ExternalLink>
+        </div>
       </div>
     </div>
   )
 }
 
 function StudyMedia({ project }: { project: Project }) {
-  const shot = shots[project.title]
+  const shot = projectShots[project.title]
 
   return (
     <BrowserFrame label={project.title} className="h-full rounded-none border-0 shadow-none">
       {shot ? (
         <img
-          src={shot}
-          alt={`Sign-up screen from ${project.title}`}
-          width={1400}
-          height={802}
+          src={shot.src}
+          alt={shot.alt}
+          width={shot.width}
+          height={shot.height}
           loading="lazy"
-          className="aspect-[16/10] h-full w-full object-cover object-left-top"
+          className="aspect-[16/10] w-full object-cover"
+          style={{ objectPosition: shot.position }}
         />
       ) : (
         // TODO: replace with a real screenshot. Do not invent a product mockup.
@@ -101,27 +101,19 @@ export function Work() {
           </SectionIntro>
 
           {/* TODO: screenshots and results for every study. Do not invent metrics. */}
-          <div className="mt-10 grid gap-4 sm:grid-cols-2">
-            {projects.map((project, index) => {
-              const prominent = Boolean(project.lead || shots[project.title])
-
-              return prominent ? (
-                <article key={project.title} className="card overflow-hidden sm:col-span-2">
-                  <div className="grid lg:grid-cols-2">
-                    <div className="border-b border-line lg:border-r lg:border-b-0">
-                      <StudyMedia project={project} />
-                    </div>
-                    <div className="p-6 sm:p-8 lg:p-10">
-                      <StudyCopy project={project} index={index} />
-                    </div>
+          <div className="mt-10 grid gap-4">
+            {projects.map((project, index) => (
+              <article key={project.title} className="card overflow-hidden">
+                <div className="grid lg:grid-cols-2">
+                  <div className="border-b border-line lg:border-r lg:border-b-0">
+                    <StudyMedia project={project} />
                   </div>
-                </article>
-              ) : (
-                <article key={project.title} className="card p-6 sm:p-8">
-                  <StudyCopy project={project} index={index} />
-                </article>
-              )
-            })}
+                  <div className="p-6 sm:p-8 lg:p-10">
+                    <StudyCopy project={project} index={index} />
+                  </div>
+                </div>
+              </article>
+            ))}
           </div>
         </Reveal>
       </Wrap>
