@@ -1,29 +1,26 @@
-import { GrainOverlay } from '@/components/GrainOverlay'
-import { Navbar } from '@/components/Navbar'
+import { SiteFooter } from '@/components/SiteFooter'
+import { SiteHeader } from '@/components/SiteHeader'
 import { PortfolioChatbot } from '@/components/PortfolioChatbot'
-import { About } from '@/sections/About'
-import { Awards } from '@/sections/Awards'
 import { Contact } from '@/sections/Contact'
-import { Experience } from '@/sections/Experience'
 import { Hero } from '@/sections/Hero'
-import { Projects } from '@/sections/Projects'
-import { Skills } from '@/sections/Skills'
+import { Services } from '@/sections/Services'
+import { Work } from '@/sections/Work'
+
+/** Off unless VITE_ENABLE_CHAT=true. The /api/chat function stays in place. */
+const chatEnabled = import.meta.env.VITE_ENABLE_CHAT === 'true'
 
 function App() {
   return (
     <>
-      <GrainOverlay />
-      <Navbar />
-      <main>
+      <SiteHeader />
+      <main id="content">
         <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Awards />
+        <Services />
+        <Work />
         <Contact />
       </main>
-      <PortfolioChatbot />
+      <SiteFooter />
+      {chatEnabled ? <PortfolioChatbot /> : null}
     </>
   )
 }
