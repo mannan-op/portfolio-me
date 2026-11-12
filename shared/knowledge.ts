@@ -21,7 +21,7 @@ export const PORTFOLIO_CHUNKS: KnowledgeChunk[] = [
     id: 'contact',
     topic: 'Contact',
     content:
-      'Contact Abdul Mannan: Email contact@abdulmannan.me, Phone (+92) 322 4574467, GitHub github.com/mannan-op, Website abdulmannan.me. He welcomes project inquiries and collaboration.',
+      'Contact Abdul Mannan: Email contact@abdulmannan.me, GitHub github.com/mannan-op, Website abdulmannan.me. He welcomes project inquiries and collaboration.',
   },
   {
     id: 'education',

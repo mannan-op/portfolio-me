@@ -5,7 +5,6 @@ export const profile = {
   tagline:
     'I work with owners in the United States, the United Kingdom and Europe, the UAE and the Gulf, and Pakistan.',
   email: 'contact@abdulmannan.me',
-  phone: '(+92) 322 4574467',
   github: 'https://github.com/mannan-op',
   site: 'https://abdulmannan.me',
   // No CV file is in the repo. Do not render a download control for this.
