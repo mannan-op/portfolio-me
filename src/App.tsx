@@ -1,29 +1,35 @@
-import { GrainOverlay } from '@/components/GrainOverlay'
-import { Navbar } from '@/components/Navbar'
-import { PortfolioChatbot } from '@/components/PortfolioChatbot'
+import { lazy, Suspense } from 'react'
+import { SiteFooter } from '@/components/SiteFooter'
+import { SiteHeader } from '@/components/SiteHeader'
 import { About } from '@/sections/About'
-import { Awards } from '@/sections/Awards'
 import { Contact } from '@/sections/Contact'
-import { Experience } from '@/sections/Experience'
 import { Hero } from '@/sections/Hero'
-import { Projects } from '@/sections/Projects'
-import { Skills } from '@/sections/Skills'
+import { Services } from '@/sections/Services'
+import { Work } from '@/sections/Work'
+
+/** Off unless VITE_ENABLE_CHAT=true. The /api/chat function stays in place and returns 404 unless CHAT_ENABLED=true. */
+const chatEnabled = import.meta.env.VITE_ENABLE_CHAT === 'true'
+const PortfolioChatbot = lazy(() =>
+  import('@/components/PortfolioChatbot').then((module) => ({ default: module.PortfolioChatbot })),
+)
 
 function App() {
   return (
     <>
-      <GrainOverlay />
-      <Navbar />
-      <main>
+      <SiteHeader />
+      <main id="content">
         <Hero />
+        <Services />
+        <Work />
         <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Awards />
         <Contact />
       </main>
-      <PortfolioChatbot />
+      <SiteFooter />
+      {chatEnabled ? (
+        <Suspense fallback={null}>
+          <PortfolioChatbot />
+        </Suspense>
+      ) : null}
     </>
   )
 }

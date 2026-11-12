@@ -1,13 +1,14 @@
 export const profile = {
   name: 'Abdul Mannan',
-  title: 'Full-Stack Software Developer (2+ years)',
-  subtitle: 'React.js · Next.js · Node.js · AI-integrated web apps',
+  title: 'Websites, automations, and internal software',
+  subtitle: 'For small and mid-sized businesses',
   tagline:
-    'I build production-grade web apps that ship fast, scale cleanly, and feel great on every device — from polished React frontends to secure APIs and AI features that actually solve problems.',
+    'I work with owners in the United States, the United Kingdom and Europe, the UAE and the Gulf, and Pakistan.',
   email: 'contact@abdulmannan.me',
   phone: '(+92) 322 4574467',
   github: 'https://github.com/mannan-op',
   site: 'https://abdulmannan.me',
+  // No CV file is in the repo. Do not render a download control for this.
   cvUrl: '#',
   education: {
     degree: 'BS Computer Science',
@@ -28,10 +29,8 @@ I'm currently pursuing my BS in Computer Science at FAST-NUCES Lahore, where cou
 } as const
 
 export const navItems = [
-  { name: 'Home', href: '#home', id: 'home' },
+  { name: 'Services', href: '#services', id: 'services' },
+  { name: 'Work', href: '#work', id: 'work' },
   { name: 'About', href: '#about', id: 'about' },
-  { name: 'Skills', href: '#skills', id: 'skills' },
-  { name: 'Projects', href: '#projects', id: 'projects' },
-  { name: 'Experience', href: '#experience', id: 'experience' },
   { name: 'Contact', href: '#contact', id: 'contact' },
 ] as const

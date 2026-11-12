@@ -1,182 +1,125 @@
-import { lazy, Suspense } from 'react'
-import { motion } from 'framer-motion'
-import { ArrowRight, Download, GitBranch, Mail, Phone } from 'lucide-react'
-import { HoverMorphText } from '@/components/HoverMorphText'
-import { ProfilePhoto } from '@/components/ProfilePhoto'
-import { profile } from '@/data/profile'
-import { fadeUp } from '@/lib/animations'
+import portrait from '@/assets/profile.webp'
+import portraitAvif from '@/assets/profile.avif'
+import portraitSmall from '@/assets/profile-480.webp'
+import portraitSmallAvif from '@/assets/profile-480.avif'
+import { BrowserFrame, ShotCover } from '@/components/BrowserFrame'
+import { ResponsiveImage } from '@/components/ResponsiveImage'
+import { Wrap } from '@/components/Wrap'
+import { projectShots } from '@/data/shots'
+import { projects } from '@/data/projects'
 
-const Scene3D = lazy(() =>
-  import('@/components/Scene3D').then((m) => ({ default: m.Scene3D })),
-)
-
-const nameVariants = [
-  { text: 'Abdul Mannan', color: '#f8fafc' },
-  { text: 'Full-Stack Dev', color: '#22c55e' },
-  { text: 'AI Engineer', color: '#f59e0b' },
-  { text: 'Problem Solver', color: '#a78bfa' },
-]
-
-const roleVariants = [
-  { text: profile.title, color: '#22c55e' },
-  { text: 'React · Next.js · Node.js', color: '#f59e0b' },
-  { text: 'Building AI-powered products', color: '#a78bfa' },
-  { text: '2+ years shipping to production', color: '#38bdf8' },
-]
-
-const taglineVariants = [
-  { text: profile.tagline, color: '#8896ad' },
-  {
-    text: 'From polished UIs to secure APIs — I ship end-to-end.',
-    color: '#22c55e',
-  },
-  {
-    text: 'LLM streaming, RAG pipelines, and agentic workflows included.',
-    color: '#f59e0b',
-  },
-  {
-    text: 'Performance, security, and craft — never an afterthought.',
-    color: '#a78bfa',
-  },
-]
+const heroProjects = projects.slice(0, 3)
 
 export function Hero() {
+  const [primary, ...rest] = heroProjects
+
   return (
-    <section
-      id="home"
-      className="relative flex min-h-[100dvh] items-center overflow-hidden pt-24 pb-20 sm:pt-28 sm:pb-24"
-    >
-      <Suspense fallback={null}>
-        <Scene3D />
-      </Suspense>
+    <section id="top" className="pt-10 pb-16 sm:pt-14 sm:pb-20 lg:pt-16 lg:pb-24">
+      <Wrap>
+        <p className="text-sm font-semibold text-accent">For small and mid-sized businesses</p>
+        <h1 className="mt-4 text-[clamp(2.05rem,8.2vw,4.6rem)] font-bold leading-[0.98] tracking-[-0.048em]">
+          <span className="block">Websites, automations,</span>
+          <span className="block">and the internal software</span>
+          <span className="block">a company runs on.</span>
+        </h1>
 
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_70%_40%,rgba(34,197,94,0.08),transparent)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_30%_at_20%_80%,rgba(245,158,11,0.05),transparent)]" />
-
-      <div className="relative mx-auto grid w-full max-w-7xl items-center gap-8 px-4 sm:gap-12 sm:px-6 lg:grid-cols-2 lg:gap-16">
-        <motion.div initial="hidden" animate="visible" className="order-2 lg:order-1">
-          <motion.div custom={0} variants={fadeUp} className="mb-6 sm:mb-8">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[10px] font-medium uppercase tracking-widest text-primary backdrop-blur-sm sm:px-4 sm:text-xs">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
-              </span>
-              Available for work
-            </span>
-          </motion.div>
-
-          <motion.div custom={1} variants={fadeUp}>
-            <h1 className="font-display text-[clamp(2rem,8vw,5.5rem)] font-extrabold leading-[1.05] tracking-tighter">
-              <HoverMorphText variants={nameVariants} as="span" />
-            </h1>
-          </motion.div>
-
-          <motion.div custom={2} variants={fadeUp} className="mt-3 sm:mt-4">
-            <p className="text-lg font-semibold sm:text-2xl md:text-3xl">
-              <HoverMorphText variants={roleVariants} as="span" />
+        <div className="mt-6 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_13.75rem] lg:gap-12">
+          <div>
+            <p className="max-w-[38rem] text-base leading-relaxed text-muted sm:text-lg">
+              You deal with me directly, from the first conversation through delivery. Most projects
+              are a site that brings in enquiries, a system that replaces the spreadsheet, or an
+              automation that handles a repeated task.
             </p>
-          </motion.div>
-
-          <motion.p custom={3} variants={fadeUp} className="mt-2 text-sm text-muted-foreground sm:text-base">
-            {profile.subtitle}
-          </motion.p>
-
-          <motion.div custom={4} variants={fadeUp} className="mt-8 max-w-xl">
-            <p className="text-base leading-relaxed sm:text-lg">
-              <HoverMorphText variants={taglineVariants} as="span" />
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <a href="#contact" className="btn-solid px-5 py-3">
+                Book a call
+              </a>
+              <a href="#work" className="btn-ghost px-5 py-3">
+                See the work
+              </a>
+            </div>
+            <p className="mt-6 hidden text-sm text-muted lg:block">
+              United States · United Kingdom & Europe · UAE & the Gulf · Pakistan
             </p>
-          </motion.div>
-
-          <motion.div custom={5} variants={fadeUp} className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap">
-            <a
-              href="#projects"
-              className="group inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:scale-[0.97] hover:shadow-primary/30 active:scale-[0.97] sm:px-7 sm:py-3.5"
-            >
-              View Projects
-              <ArrowRight
-                size={16}
-                className="transition-transform duration-300 group-hover:translate-x-1"
-              />
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:bg-primary/10 active:scale-[0.97] sm:px-7 sm:py-3.5"
-            >
-              Contact
-            </a>
-            <a
-              href={profile.cvUrl}
-              className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:bg-primary/10 active:scale-[0.97] sm:px-7 sm:py-3.5"
-            >
-              <Download size={16} />
-              CV
-            </a>
-          </motion.div>
-
-          <motion.div
-            custom={6}
-            variants={fadeUp}
-            className="mt-8 flex flex-col gap-3 text-xs text-muted-foreground sm:mt-12 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-3 sm:text-sm"
-          >
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex cursor-pointer items-center gap-2 break-all transition-colors duration-200 hover:text-primary sm:break-normal"
-            >
-              <GitBranch size={16} className="shrink-0" />
-              github.com/mannan-op
-            </a>
-            <a
-              href={`mailto:${profile.email}`}
-              className="inline-flex cursor-pointer items-center gap-2 break-all transition-colors duration-200 hover:text-primary sm:break-normal"
-            >
-              <Mail size={16} className="shrink-0" />
-              {profile.email}
-            </a>
-            <a
-              href={`tel:${profile.phone.replace(/\s/g, '')}`}
-              className="inline-flex cursor-pointer items-center gap-2 transition-colors duration-200 hover:text-primary"
-            >
-              <Phone size={16} className="shrink-0" />
-              {profile.phone}
-            </a>
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="order-1 flex justify-center lg:order-2 lg:justify-end"
-        >
-          <ProfilePhoto />
-        </motion.div>
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 sm:block"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-          className="flex flex-col items-center gap-2"
-        >
-          <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-            Scroll
-          </span>
-          <div className="flex h-12 w-6 items-start justify-center rounded-full border border-white/10 p-1.5">
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-              className="h-2 w-1 rounded-full bg-primary"
-            />
           </div>
-        </motion.div>
-      </motion.div>
+
+          <figure className="w-44 sm:w-52 lg:w-full">
+            <ResponsiveImage
+              alt="Portrait of Abdul Mannan"
+              width={764}
+              height={880}
+              webp={portrait}
+              avif={portraitAvif}
+              webpSmall={portraitSmall}
+              avifSmall={portraitSmallAvif}
+              smallWidth={480}
+              sizes="(min-width: 1024px) 220px, 208px"
+              loading="eager"
+              fetchPriority="high"
+              className="aspect-[4/5] w-full rounded-2xl object-cover object-[center_18%] shadow-[0_18px_40px_-24px_rgba(14,16,20,0.55)]"
+            />
+            <figcaption className="mt-3 text-sm font-semibold tracking-[-0.02em]">
+              Abdul Mannan
+            </figcaption>
+          </figure>
+          <p className="text-sm text-muted lg:hidden">
+            United States · United Kingdom & Europe · UAE & the Gulf · Pakistan
+          </p>
+        </div>
+
+        {primary ? (
+          <div className="mt-12 grid gap-4 lg:mt-16 lg:grid-cols-12 lg:grid-rows-2">
+            <div className="lg:col-span-7 lg:row-span-2 lg:min-h-[520px]">
+              <BrowserFrame label={primary.title} className="min-h-[280px] lg:h-full">
+                <FrameBody project={primary} large />
+              </BrowserFrame>
+            </div>
+            {rest.map((project) => (
+              <div key={project.title} className="lg:col-span-5">
+                <BrowserFrame label={project.title} className="min-h-[200px] lg:h-full">
+                  <FrameBody project={project} />
+                </BrowserFrame>
+              </div>
+            ))}
+          </div>
+        ) : null}
+      </Wrap>
     </section>
+  )
+}
+
+function FrameBody({
+  project,
+  large = false,
+}: {
+  project: (typeof projects)[number]
+  large?: boolean
+}) {
+  const shot = projectShots[project.title]
+  if (!shot) {
+    return (
+      <ShotCover
+        large={large}
+        title={project.title}
+        detail={project.hook}
+        className={large ? 'min-h-[220px] lg:min-h-[460px]' : 'min-h-[150px]'}
+      />
+    )
+  }
+
+  return (
+    <ResponsiveImage
+      alt={shot.alt}
+      width={shot.width}
+      height={shot.height}
+      webp={shot.src}
+      avif={shot.avif}
+      webpSmall={shot.small}
+      avifSmall={shot.smallAvif}
+      smallWidth={shot.smallWidth}
+      sizes="(min-width: 1024px) 40vw, 100vw"
+      style={{ objectPosition: shot.position }}
+      className="h-full min-h-[180px] w-full object-cover lg:min-h-0"
+    />
   )
 }
