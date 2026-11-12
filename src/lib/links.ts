@@ -14,7 +14,3 @@ export function publicUrl(value: string | null | undefined): string | null {
   if (url.protocol !== 'https:' && url.protocol !== 'http:') return null
   return url.toString()
 }
-
-export function telHref(phone: string): string {
-  return `tel:${phone.replace(/[^\d+]/g, '')}`
-}

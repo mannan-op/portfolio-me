@@ -3,7 +3,6 @@ import { Reveal } from '@/components/Reveal'
 import { SectionIntro } from '@/components/SectionIntro'
 import { Wrap } from '@/components/Wrap'
 import { profile } from '@/data/profile'
-import { telHref } from '@/lib/links'
 
 type FormStatus = 'idle' | 'sending' | 'success' | 'error'
 
@@ -73,7 +72,7 @@ export function ContactForm() {
       <div>
         <p className="text-2xl font-semibold tracking-[-0.03em]">Message sent.</p>
         <p className="mt-3 text-base leading-relaxed text-muted">
-          I will reply by email. If it is urgent, call the number on this page.
+          I will reply by email.
         </p>
         <button
           type="button"
@@ -183,7 +182,7 @@ export function Contact() {
         <Reveal>
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <SectionIntro kicker="Contact" title="Tell me about the business." tone="invert">
-              I read every note myself. Email and phone reach me directly.
+              I read every note myself. Email reaches me directly.
             </SectionIntro>
             <a href={`mailto:${profile.email}`} className="btn-light shrink-0 px-5 py-3">
               {profile.email}
@@ -202,22 +201,6 @@ export function Contact() {
                     {profile.email}
                   </a>
                 </dd>
-              </div>
-              <div className="grid grid-cols-[6.5rem_minmax(0,1fr)] gap-4 py-4">
-                <dt className="text-sm text-white/80">Phone</dt>
-                <dd>
-                  <a
-                    href={telHref(profile.phone)}
-                    className="text-sm text-white underline decoration-white/30 underline-offset-4 sm:text-base"
-                  >
-                    {profile.phone}
-                  </a>
-                </dd>
-              </div>
-              <div className="grid grid-cols-[6.5rem_minmax(0,1fr)] gap-4 py-4">
-                <dt className="text-sm text-white/80">WhatsApp</dt>
-                {/* TODO: add the WhatsApp link. Do not point this at '#' . */}
-                <dd className="text-sm text-white/80 sm:text-base">Link to be added</dd>
               </div>
               <div className="grid grid-cols-[6.5rem_minmax(0,1fr)] gap-4 py-4">
                 <dt className="text-sm text-white/80">Book a call</dt>
