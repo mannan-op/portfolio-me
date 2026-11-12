@@ -59,17 +59,21 @@ function StudyCopy({ project, index }: { project: Project; index: number }) {
           <span className="text-muted">{project.built}</span>
         </p>
         <StackList stack={project.stack} />
-        {project.note ? (
-          <details className="text-sm leading-relaxed text-muted">
-            <summary className="cursor-pointer font-medium text-ink">Full note</summary>
-            <p className="mt-3">{project.note}</p>
+        {project.details ? (
+          <details className="rounded-xl border border-line px-4 py-3" open>
+            <summary className="cursor-pointer text-sm font-medium text-ink sm:text-base">
+              Details
+            </summary>
+            <div className="mt-3 space-y-3 text-sm leading-relaxed text-muted sm:text-base">
+              <p>{project.details.summary}</p>
+              <ol className="list-decimal space-y-2 pl-5">
+                {project.details.steps.map((step) => (
+                  <li key={step}>{step}</li>
+                ))}
+              </ol>
+            </div>
           </details>
         ) : null}
-        {/* TODO: measured results go here. Do not invent numbers, quotes, or client names. */}
-        <p className="text-sm leading-relaxed text-muted">
-          <span className="font-medium text-ink">Results. </span>
-          To be added.
-        </p>
         <div className="flex flex-wrap gap-x-5 gap-y-2">
           <ExternalLink href={project.site}>View live site</ExternalLink>
           <ExternalLink href={project.repo ?? project.link}>Repository</ExternalLink>
@@ -130,11 +134,8 @@ export function Work() {
       <Wrap>
         <Reveal>
           <SectionIntro kicker="Work" title="Selected work">
-            Systems I have built, for clients and as my own products. Screenshots and measured
-            results will be added when they are ready to publish.
+            Systems I have built, for clients and as my own products.
           </SectionIntro>
-
-          {/* TODO: screenshots and results for every study. Do not invent metrics. */}
           <div className="mt-10 grid gap-4">
             {projects.map((project, index) => (
               <article key={project.title} className="card overflow-hidden">
