@@ -14,8 +14,11 @@ export interface Project {
   repo?: string
   /** Public website. Omit when none exists. Never set this to '#'. */
   site?: string
-  /** Longer case-study note, shown behind a disclosure on the card. */
-  note?: string
+  /** Confirmed how-it-works notes. Shown under Details. No metrics. */
+  details?: {
+    summary: string
+    steps: readonly string[]
+  }
   /** Short honest credit, such as Team project. */
   tag?: string
 }
@@ -30,7 +33,18 @@ export const projects: Project[] = [
       'Shoppers and boutiques needed one place for custom clothing: a catalogue, quotes, messages, and a way to follow an order.',
     built:
       'Built with a team. The app is a React and Vite storefront with a Node and Express API, MongoDB, and Socket.IO. It includes the shop, virtual try-on, custom stitching bids, live order tracking, boutique dashboards, and an admin area.',
-    stack: ['React', 'Vite', 'Node.js', 'Express', 'MongoDB', 'Socket.IO'],
+    stack: ['React', 'Vite', 'Node.js', 'Express', 'MongoDB', 'Socket.IO', 'Stripe'],
+    details: {
+      summary:
+        'For shoppers ordering custom clothes and for the boutiques that make them. Abdul’s public repository is a fork of the team project.',
+      steps: [
+        'The shop covers collections, search, fabric and size choices, a wishlist, and a cart.',
+        'A customer sends a custom request with reference photos, measurements, and a deadline. Boutiques reply with proposals. Messages use Socket.IO, and accepting a proposal creates the order.',
+        'Order tracking moves through placed, accepted, in tailoring, quality passed, dispatched, and delivered.',
+        'Boutique dashboards cover the catalogue, stock, custom requests, and the order pipeline. An admin area covers boutique KYC verification, listing moderation, and user management.',
+        'Stripe is the payment gateway in the repository.',
+      ],
+    },
     featured: true,
     lead: true,
     tag: 'Team project',
@@ -46,6 +60,16 @@ export const projects: Project[] = [
     built:
       'An e-commerce store based in Lahore. The homepage opens on the Eid collection, with paths for the stitched collection and unstitched fabric. The banner lists cash on delivery and free delivery over Rs. 5,000, and product pages offer WhatsApp help.',
     stack: ['Next.js'],
+    details: {
+      summary:
+        'For Abeera, a Lahore house selling lawn, chiffon, and stitched and unstitched clothes. The public shop is a Next.js storefront. A separate desktop app bills the store.',
+      steps: [
+        'The homepage leads with the Eid collection, with paths for the stitched collection and unstitched fabric.',
+        'The site banner lists cash on delivery and free delivery over Rs. 5,000. Product pages offer WhatsApp help.',
+        'A separate Tauri, React, and Rust desktop app stores clothing inventory in SQLite: name, barcode, category, size, color, price, and quantity.',
+        'A bill is a cart saved on the machine. If a phone number is entered, the app can open that bill in WhatsApp or SMS.',
+      ],
+    },
     lead: true,
     site: 'https://abeera-shop.vercel.app',
     repo: 'https://github.com/mannan-op/abeera_shop',
@@ -60,6 +84,14 @@ export const projects: Project[] = [
     built:
       'An online store. The homepage shows the summer collection, shop and new-arrival links, and product prices. Complimentary shipping is listed on orders over $75.',
     stack: ['Next.js'],
+    details: {
+      summary: 'For shoppers browsing Tasbeeha Collections.',
+      steps: [
+        'The homepage shows lawn suits, silk formals, kurtas, shawls, and unstitched fabric, with prices.',
+        'It links into the shop and the new arrivals.',
+        'Complimentary shipping is listed on orders over $75.',
+      ],
+    },
     lead: true,
     site: 'https://www.tasbeehacollections.com',
   },
@@ -73,8 +105,18 @@ export const projects: Project[] = [
     built:
       'A Tauri, React, and Rust desktop app that works offline and installs like a normal program. SQLite stores projects, milestones, and invoices on the machine. Argon2 limits billing data to authorized staff.',
     stack: ['Tauri', 'React', 'Rust', 'SQLite', 'Argon2'],
+    details: {
+      summary:
+        'For a freelance client running a construction business, in place of spreadsheets spread across the team.',
+      steps: [
+        'The app is cross-platform. Tauri keeps it lighter than Electron while still holding the relationships between projects, milestones, and invoices.',
+        'It works offline and installs like a normal desktop program.',
+        'A local SQLite database stores projects, milestones, and invoices on the machine.',
+        'Argon2 authentication limits billing data to authorized staff.',
+        'From that app the client can track project status, generate billing records, and monitor milestone completion.',
+      ],
+    },
     lead: true,
-    note: 'A freelance client running a construction business needed a way to track multiple job sites, manage billing, and monitor milestones, without relying on spreadsheets scattered across the team. I built a cross-platform desktop app in Tauri, React, and Rust: a fast, native-feeling app that works offline and installs like any other desktop program. Keeping it lightweight meant Tauri rather than Electron, while still supporting the relationships between projects, milestones, and invoices. A local SQLite database stores the data offline, and Argon2 authentication limits billing data to authorized staff. From that one app the client can track project status, generate billing records, and monitor milestone completion.',
   },
   {
     title: 'n8n video automation',
@@ -85,16 +127,41 @@ export const projects: Project[] = [
     built:
       'An n8n workflow that drafts with a local model, pulls stock footage from Pexels, renders in Creatomate, and uploads to YouTube.',
     stack: ['n8n', 'Ollama', 'Pexels', 'Creatomate', 'YouTube'],
+    details: {
+      summary:
+        'A short-form video pipeline orchestrated in n8n. The local model is Ollama, reached through ngrok.',
+      steps: [
+        'n8n drafts the video with a local Ollama model, reached through ngrok.',
+        'The workflow pulls stock footage from Pexels.',
+        'Creatomate renders the video.',
+        'The workflow uploads it to YouTube.',
+      ],
+    },
     lead: true,
   },
   {
-    // TODO: Abdul to fill in what Hisab AI does, the stack, and any real URL.
     title: 'Hisab AI',
-    hook: 'WhatsApp automation.',
-    description: 'WhatsApp automation. Details to be added.',
-    problem: 'Details to be added.',
-    built: 'Details to be added.',
-    stack: [],
+    hook: 'Personal budget bot for WhatsApp.',
+    description:
+      'A personal budget bot. You set how much money you have, text each expense in plain language, and ask what is left. It keeps the totals, splits spending by category, and can reserve cash for a date.',
+    problem:
+      'A personal budget has to record what you have, what you spent, and what is set aside for a date.',
+    built:
+      'A Node, TypeScript, and Express bot with SQLite. One function handles each message. The same ledger runs in a local CLI, through a Twilio WhatsApp sandbox webhook, or through the Meta WhatsApp Cloud API.',
+    stack: ['Node.js', 'TypeScript', 'Express', 'SQLite', 'WhatsApp'],
+    details: {
+      summary:
+        'For one person tracking their own money. Each phone number has its own ledger in a single SQLite file.',
+      steps: [
+        'Set or add funds. Setting funds replaces the balance. Older expenses stay in reports and stop affecting that balance.',
+        'Text an expense in plain language. A keyword map files it as food, transport, groceries, bills, shopping, entertainment, health, or other.',
+        'Ask for the balance, a category report for the week or month, the last ten entries, or advice. Advice covers the 7-day burn, how long available cash lasts at that pace, the biggest category this month, and whether each reserve is covered.',
+        'Reserve an amount for a date. Available cash is the balance minus those reserves, and the reply includes a safe daily limit so a reserve is not spent early.',
+        'Undo the last funds change, expense, or goal change. Reset deletes that ledger only after a confirmation.',
+        'With no API key, every command still works. If an OpenAI key is set, messages the parser does not understand can be interpreted by the model, and advice can be rewritten only when every figure is still there.',
+      ],
+    },
     lead: true,
+    repo: 'https://github.com/mannan-op/whats_tracky',
   },
 ]
