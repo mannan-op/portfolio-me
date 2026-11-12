@@ -184,9 +184,19 @@ export function Contact() {
             <SectionIntro kicker="Contact" title="Tell me about the business." tone="invert">
               I read every note myself. Email reaches me directly.
             </SectionIntro>
-            <a href={`mailto:${profile.email}`} className="btn-light shrink-0 px-5 py-3">
-              {profile.email}
-            </a>
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href={profile.booking}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-solid shrink-0 px-5 py-3"
+              >
+                Book a call
+              </a>
+              <a href={`mailto:${profile.email}`} className="btn-light shrink-0 px-5 py-3">
+                {profile.email}
+              </a>
+            </div>
           </div>
 
           <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-16">
@@ -204,8 +214,16 @@ export function Contact() {
               </div>
               <div className="grid grid-cols-[6.5rem_minmax(0,1fr)] gap-4 py-4">
                 <dt className="text-sm text-white/80">Book a call</dt>
-                {/* TODO: add the calendar / booking URL, then point the header button at it. */}
-                <dd className="text-sm text-white/80 sm:text-base">Calendar link to be added</dd>
+                <dd>
+                  <a
+                    href={profile.booking}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm break-words text-white underline decoration-white/30 underline-offset-4 sm:text-base"
+                  >
+                    cal.com/abdul-mannan-rv1is3/intro-call
+                  </a>
+                </dd>
               </div>
             </dl>
 

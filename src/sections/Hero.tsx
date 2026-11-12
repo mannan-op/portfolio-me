@@ -5,6 +5,7 @@ import portraitSmallAvif from '@/assets/profile-480.avif'
 import { BrowserFrame, ShotCover } from '@/components/BrowserFrame'
 import { ResponsiveImage } from '@/components/ResponsiveImage'
 import { Wrap } from '@/components/Wrap'
+import { profile } from '@/data/profile'
 import { projectShots } from '@/data/shots'
 import { projects } from '@/data/projects'
 
@@ -31,7 +32,12 @@ export function Hero() {
               automation that handles a repeated task.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <a href="#contact" className="btn-solid px-5 py-3">
+              <a
+                href={profile.booking}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-solid px-5 py-3"
+              >
                 Book a call
               </a>
               <a href="#work" className="btn-ghost px-5 py-3">
