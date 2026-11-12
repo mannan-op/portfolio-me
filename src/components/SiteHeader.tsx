@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
-import { navItems } from '@/data/profile'
+import { navItems, profile } from '@/data/profile'
 import { Wrap } from '@/components/Wrap'
 
 const sectionIds = navItems.map((item) => item.id)
@@ -67,7 +67,12 @@ export function SiteHeader() {
             </a>
           ))}
         </nav>
-        <a href="#contact" className="btn-solid px-3.5 py-2">
+        <a
+          href={profile.booking}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-solid px-3.5 py-2"
+        >
           Book a call
         </a>
       </Wrap>
