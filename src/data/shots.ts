@@ -84,7 +84,7 @@ export const projectShots: Record<string, ProjectShot> = {
     position: 'center',
     chrome: 'plain',
   },
-  'Abeeras Collection': {
+  'Abeera Collection': {
     src: abeeraShot,
     avif: abeeraAvif,
     small: abeeraSmall,

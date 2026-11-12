@@ -219,9 +219,9 @@ export function Contact() {
                     href={profile.booking}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm break-words text-white underline decoration-white/30 underline-offset-4 sm:text-base"
+                    className="text-sm text-white underline decoration-white/30 underline-offset-4 sm:text-base"
                   >
-                    cal.com/abdul-mannan-rv1is3/intro-call
+                    Book a 30-min intro call
                   </a>
                 </dd>
               </div>

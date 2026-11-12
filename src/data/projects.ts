@@ -51,7 +51,7 @@ export const projects: Project[] = [
     repo: 'https://github.com/mannan-op/Auto-Stitch-v2',
   },
   {
-    title: 'Abeeras Collection',
+    title: 'Abeera Collection',
     hook: 'Pakistani womenswear shop in Lahore.',
     description:
       'An online store for Abeera, a Lahore house selling lawn, chiffon, and stitched and unstitched clothes. The homepage leads with the Eid collection. Cash on delivery is offered, and product pages include WhatsApp help.',
