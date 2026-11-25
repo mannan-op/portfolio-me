@@ -18,6 +18,10 @@ import n8nShot from '@/assets/work/n8n.webp'
 import n8nAvif from '@/assets/work/n8n.avif'
 import n8nSmall from '@/assets/work/n8n-800.webp'
 import n8nSmallAvif from '@/assets/work/n8n-800.avif'
+import zameenzarHero from '@/assets/work/zameenzar-hero.webp'
+import zameenzarHeroAvif from '@/assets/work/zameenzar-hero.avif'
+import zameenzarHeroNarrow from '@/assets/work/zameenzar-hero-narrow.webp'
+import zameenzarHeroNarrowAvif from '@/assets/work/zameenzar-hero-narrow.avif'
 import zameenzarShot from '@/assets/work/zameenzar.webp'
 import zameenzarAvif from '@/assets/work/zameenzar.avif'
 import zameenzarSmall from '@/assets/work/zameenzar-800.webp'
@@ -39,6 +43,12 @@ export interface ProjectShot {
   position: string
   /** plain = the image already includes its own frame, so skip the browser chrome */
   chrome?: 'browser' | 'plain'
+  /** Hero frame shots. The case-study image stays on src. */
+  hero?: {
+    alt: string
+    desktop: { webp: string; avif: string }
+    mobile: { webp: string; avif: string }
+  }
 }
 
 export const projectShots: Record<string, ProjectShot> = {
@@ -52,6 +62,11 @@ export const projectShots: Record<string, ProjectShot> = {
     width: 1440,
     height: 900,
     position: 'center top',
+    hero: {
+      alt: 'ZameenZar homepage, with the headline and navigation filling the card',
+      desktop: { webp: zameenzarHero, avif: zameenzarHeroAvif },
+      mobile: { webp: zameenzarHeroNarrow, avif: zameenzarHeroNarrowAvif },
+    },
   },
   'AutoStitch AI': {
     src: autostitchShot,
