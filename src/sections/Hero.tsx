@@ -115,7 +115,7 @@ function FrameBody({
 
   return (
     <ResponsiveImage
-      alt={shot.hero?.alt ?? shot.alt}
+      alt={shot.alt}
       width={shot.width}
       height={shot.height}
       webp={shot.src}
@@ -125,7 +125,6 @@ function FrameBody({
       smallWidth={shot.smallWidth}
       sizes="(min-width: 1024px) 40vw, 100vw"
       style={{ objectPosition: shot.position }}
-      artDirection={shot.hero}
       className="h-full min-h-[180px] w-full object-cover lg:min-h-0"
     />
   )

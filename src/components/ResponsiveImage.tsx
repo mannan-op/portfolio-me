@@ -14,7 +14,6 @@ export function ResponsiveImage({
   style,
   loading = 'lazy',
   fetchPriority,
-  artDirection,
 }: {
   alt: string
   width: number
@@ -29,11 +28,6 @@ export function ResponsiveImage({
   style?: CSSProperties
   loading?: 'eager' | 'lazy'
   fetchPriority?: 'high' | 'low' | 'auto'
-  /** Different crops for the desktop and narrow frames. Other images ignore this. */
-  artDirection?: {
-    desktop: { webp: string; avif: string }
-    mobile: { webp: string; avif: string }
-  }
 }) {
   const avifSrcSet =
     avifSmall && smallWidth ? `${avifSmall} ${smallWidth}w, ${avif} ${width}w` : avif
@@ -42,19 +36,8 @@ export function ResponsiveImage({
 
   return (
     <picture>
-      {artDirection ? (
-        <>
-          <source media="(min-width: 1024px)" type="image/avif" srcSet={artDirection.desktop.avif} />
-          <source media="(min-width: 1024px)" type="image/webp" srcSet={artDirection.desktop.webp} />
-          <source type="image/avif" srcSet={artDirection.mobile.avif} />
-          <source type="image/webp" srcSet={artDirection.mobile.webp} />
-        </>
-      ) : (
-        <>
-          <source type="image/avif" srcSet={avifSrcSet} sizes={sizes} />
-          <source type="image/webp" srcSet={webpSrcSet} sizes={sizes} />
-        </>
-      )}
+      <source type="image/avif" srcSet={avifSrcSet} sizes={sizes} />
+      <source type="image/webp" srcSet={webpSrcSet} sizes={sizes} />
       <img
         src={webp}
         alt={alt}
