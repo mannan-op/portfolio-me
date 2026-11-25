@@ -125,7 +125,11 @@ function FrameBody({
       smallWidth={shot.smallWidth}
       sizes="(min-width: 1024px) 40vw, 100vw"
       style={{ objectPosition: shot.position }}
-      className="h-full min-h-[180px] w-full object-cover lg:min-h-0"
+      className={
+        shot.fit === 'contain'
+          ? 'h-full min-h-[180px] w-full bg-canvas object-contain lg:min-h-0'
+          : 'h-full min-h-[180px] w-full object-cover lg:min-h-0'
+      }
     />
   )
 }

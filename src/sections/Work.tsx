@@ -118,7 +118,11 @@ function StudyMedia({ project }: { project: Project }) {
           smallWidth={shot.smallWidth}
           sizes="(min-width: 1024px) 560px, 100vw"
           style={{ objectPosition: shot.position }}
-          className="aspect-[16/10] w-full object-cover"
+          className={
+            shot.fit === 'contain'
+              ? 'h-auto w-full bg-canvas object-contain'
+              : 'aspect-[16/10] w-full object-cover'
+          }
         />
       ) : (
         // TODO: replace with a real screenshot. Do not invent a product mockup.
