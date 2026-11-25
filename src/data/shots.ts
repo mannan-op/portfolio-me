@@ -39,8 +39,6 @@ export interface ProjectShot {
   position: string
   /** plain = the image already includes its own frame, so skip the browser chrome */
   chrome?: 'browser' | 'plain'
-  /** contain keeps the whole screenshot visible. Other cards stay cover. */
-  fit?: 'cover' | 'contain'
 }
 
 export const projectShots: Record<string, ProjectShot> = {
@@ -52,9 +50,8 @@ export const projectShots: Record<string, ProjectShot> = {
     smallWidth: 800,
     alt: 'ZameenZar homepage: a Lahore hostel and rental search over a room photo',
     width: 1440,
-    height: 1410,
+    height: 900,
     position: 'center top',
-    fit: 'contain',
   },
   'AutoStitch AI': {
     src: autostitchShot,

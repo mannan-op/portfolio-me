@@ -76,7 +76,7 @@ export function Hero() {
         {primary ? (
           <div className="mt-12 grid gap-4 lg:mt-16 lg:grid-cols-12 lg:grid-rows-2">
             <div className="lg:col-span-7 lg:row-span-2 lg:min-h-[520px]">
-              <BrowserFrame label={primary.title} className="min-h-[280px] lg:h-full">
+              <BrowserFrame label={primary.title} className="lg:h-auto">
                 <FrameBody project={primary} large />
               </BrowserFrame>
             </div>
@@ -126,8 +126,8 @@ function FrameBody({
       sizes="(min-width: 1024px) 40vw, 100vw"
       style={{ objectPosition: shot.position }}
       className={
-        shot.fit === 'contain'
-          ? 'h-full min-h-[180px] w-full bg-canvas object-contain lg:min-h-0'
+        large
+          ? 'aspect-[16/10] w-full object-cover'
           : 'h-full min-h-[180px] w-full object-cover lg:min-h-0'
       }
     />
