@@ -18,6 +18,10 @@ import n8nShot from '@/assets/work/n8n.webp'
 import n8nAvif from '@/assets/work/n8n.avif'
 import n8nSmall from '@/assets/work/n8n-800.webp'
 import n8nSmallAvif from '@/assets/work/n8n-800.avif'
+import zameenzarShot from '@/assets/work/zameenzar.webp'
+import zameenzarAvif from '@/assets/work/zameenzar.avif'
+import zameenzarSmall from '@/assets/work/zameenzar-800.webp'
+import zameenzarSmallAvif from '@/assets/work/zameenzar-800.avif'
 import tasbeehaShot from '@/assets/work/tasbeeha.webp'
 import tasbeehaAvif from '@/assets/work/tasbeeha.avif'
 import tasbeehaSmall from '@/assets/work/tasbeeha-800.webp'
@@ -38,6 +42,17 @@ export interface ProjectShot {
 }
 
 export const projectShots: Record<string, ProjectShot> = {
+  ZameenZar: {
+    src: zameenzarShot,
+    avif: zameenzarAvif,
+    small: zameenzarSmall,
+    smallAvif: zameenzarSmallAvif,
+    smallWidth: 800,
+    alt: 'ZameenZar homepage: a Lahore hostel and rental search over a room photo',
+    width: 1440,
+    height: 900,
+    position: 'center top',
+  },
   'AutoStitch AI': {
     src: autostitchShot,
     avif: autostitchAvif,
