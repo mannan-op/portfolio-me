@@ -25,6 +25,31 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: 'ZameenZar',
+    hook: 'Hostels and rentals in Lahore, confirmed available.',
+    description:
+      'A site for finding a hostel or rental in Lahore. Each listing shows when it was last confirmed free, how the rent compares with the area, and whether someone has seen the place in person.',
+    problem:
+      'Someone looking for a hostel or a rental in Lahore needs to know the place is still free, how the rent sits against the area, and whether anyone has checked it.',
+    built:
+      'Built by Abdul Mannan. ZameenZar is a React and Vite app, with Supabase in the client bundle, served from Vercel. The homepage searches hostels by university and by boys or girls, and also opens rent, buy, and plots.',
+    stack: ['React', 'Vite', 'Supabase'],
+    details: {
+      summary:
+        'For people looking for a hostel or a rental in Lahore, and for owners listing a room, hostel, or flat.',
+      steps: [
+        'Hostels can be filtered by university, including LUMS, UET, PU, FAST, UCP, COMSATS, GCU, and Kinnaird, and by boys or girls. Results are sorted by distance from the campus gate and show when seats were last confirmed.',
+        'Rent, buy, plots, and commercial are separate paths. Rental cards cover flats, portions, and houses.',
+        'Each card carries three marks: confirmed available, fair price, and verified. Owners confirm a listing is still free. After 14 days without a check it reads Awaiting confirmation. Fair price compares the rent with other listings of the same type in the same area. Verified means someone from ZameenZar has visited.',
+        'Noor is a support assistant for hostels near a campus, rent comparisons, and booking a visit, in Urdu, Roman Urdu, or English, with a microphone for Urdu.',
+        'The site also has area guides, a construction-cost calculator, a mortgage and EMI calculator linked to KIBOR, and an investment guide.',
+        'An owner can list a room, hostel, or flat from the site.',
+      ],
+    },
+    lead: true,
+    site: 'https://zameenzar.live/',
+  },
+  {
     title: 'AutoStitch AI',
     hook: 'Team project. A marketplace for custom tailoring.',
     description:
