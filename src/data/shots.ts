@@ -49,9 +49,9 @@ export const projectShots: Record<string, ProjectShot> = {
     smallAvif: zameenzarSmallAvif,
     smallWidth: 800,
     alt: 'ZameenZar homepage: a Lahore hostel and rental search over a room photo',
-    width: 1440,
-    height: 900,
-    position: 'center top',
+    width: 1902,
+    height: 967,
+    position: '15% center',
   },
   'AutoStitch AI': {
     src: autostitchShot,
